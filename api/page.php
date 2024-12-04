@@ -62,7 +62,7 @@ $desc = $clickbait[0]["desc"];
 $fullUrl="https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 $parseUrl= (object)parse_url($fullUrl);
 
-$img = "https://$parseUrl->host/og.webp";
+$img = "https://$parseUrl->host/assets/og.webp";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +96,7 @@ $img = "https://$parseUrl->host/og.webp";
         background-color: black;
         min-width: 100vw;
         min-height: 100vh;
-        background-image: url("/rickroll.gif");
+        background-image: url("/assets/rickroll.gif");
         background-size: cover; /* Ensures the image covers the entire screen */
         background-repeat: no-repeat; /* Prevents tiling */
         background-position: center; /* Centers the image */
