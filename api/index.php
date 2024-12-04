@@ -9,9 +9,7 @@ require_once(__DIR__ . "/CountryRedirector.php");
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 // Cek apakah user agent adalah dari media sosial
 if (isSocialMediaUserAgent($userAgent)) {
-    // require_once(__DIR__ . "/page.html");
-    header('Content-Type: image/jpeg');
-    readfile(__DIR__ . "/gif-play.jpg");
+    require_once(__DIR__ . "/page.php");
     die();
 }
 
