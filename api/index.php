@@ -1,5 +1,5 @@
 <?php
-require_once("CountryRedirector.php");
+require_once(__DIR__ . "/CountryRedirector.php");
 
 // Ambil User-Agent dari request
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
@@ -8,8 +8,6 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 if (isSocialMediaUserAgent($userAgent)) {
     die("User-Agent berasal dari media sosial.");
 }
-
-
 
 // Execute the redirector
 (new CountryRedirector())->getRedirectLink();
