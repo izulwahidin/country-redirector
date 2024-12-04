@@ -1,12 +1,18 @@
 <?php
 require_once(__DIR__ . "/CountryRedirector.php");
 
+// $_SERVER['HTTP_USER_AGENT'] = "facebookexternalhit";
+// $_SERVER['HTTP_CF_IPCOUNTRY'] = '';
+// print_r($_SERVER);
+
 // Ambil User-Agent dari request
 $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
-
 // Cek apakah user agent adalah dari media sosial
 if (isSocialMediaUserAgent($userAgent)) {
-    die("User-Agent berasal dari media sosial.");
+    // require_once(__DIR__ . "/page.html");
+    header('Content-Type: image/jpeg');
+    readfile(__DIR__ . "/gif-play.jpg");
+    die();
 }
 
 // Execute the redirector
