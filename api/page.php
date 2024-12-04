@@ -58,11 +58,7 @@ shuffle($clickbait);
 $title = $clickbait[0]["title"];
 $desc = $clickbait[0]["desc"];
 
-
-$fullUrl="https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$parseUrl= (object)parse_url($fullUrl);
-
-$img = "https://$parseUrl->host/assets/og.webp";
+$img = "https://cdn.jsdelivr.net/gh/izulwahidin/WStatic@main/og.webp";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +92,7 @@ $img = "https://$parseUrl->host/assets/og.webp";
         background-color: black;
         min-width: 100vw;
         min-height: 100vh;
-        background-image: url("/assets/rickroll.gif");
+        background-image: url("https://cdn.jsdelivr.net/gh/izulwahidin/WStatic@main/rickroll.gif");
         background-size: cover; /* Ensures the image covers the entire screen */
         background-repeat: no-repeat; /* Prevents tiling */
         background-position: center; /* Centers the image */
