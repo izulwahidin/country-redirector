@@ -3,19 +3,17 @@
 declare(strict_types=1);
 class CountryRedirector
 {
-    private const DEFAULT_LINK = "";
-    private const JUNK_LINK = "";
 
     private array $redirectConfig = [];
 
     public function __construct($costumConfig = false)
-    { 
-        if($costumConfig != false || !is_array($costumConfig) || empty($costumConfig)){
-            $this->returnError('config must be an Array format and not empty');
+    {
+        if (!is_array($costumConfig) || empty($costumConfig)) {
+            $this->returnError('Config must be an Array format and not empty');
         }
 
-        
-        $this->$redirectConfig = $costumConfig;
+
+        $this->redirectConfig = $costumConfig;
     }
 
     public function getRedirectLink(): void
@@ -29,13 +27,16 @@ class CountryRedirector
 
         // Check tiers first (with early return)
         foreach ($this->redirectConfig as $tier => $data) {
+            // handle loop if default or junk
+            if (is_string($data)) continue;
+
             if (in_array($visitorCountry, $data['country'])) {
-                $this->returnTierLink($tier);
+                $this->returnTierLink($data['direct_link']);
             }
         }
 
         // Check junk list
-        if (in_array($visitorCountry, $this->redirectConfig['junk'])) {
+        if (in_array($visitorCountry, ['XX', 'T1'])) {
             $this->returnJunkLink();
         }
 
@@ -43,21 +44,21 @@ class CountryRedirector
         $this->returnDefaultLink();
     }
 
-    private function returnTierLink(array $tier): void
+    private function returnTierLink(string $url): void
     {
-        header("Location: {$tier['direct_link']}");
+        header("Location: $url");
         exit;
     }
 
     private function returnJunkLink(): void
     {
-        header("Location: " . $this->$redirectConfig->junk);
+        header("Location: " . $this->redirectConfig['junk']);
         exit;
     }
 
     private function returnDefaultLink(): void
     {
-        header("Location: " .  $this->$redirectConfig->default);
+        header("Location: " .  $this->redirectConfig['default']);
         exit;
     }
 
@@ -69,7 +70,7 @@ class CountryRedirector
 
     public function isSocialMediaUserAgent(): bool
     {
-        
+
         $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
         // Daftar kata kunci user agent dari aplikasi media sosial
         $socialMediaAgents = [
@@ -82,10 +83,10 @@ class CountryRedirector
             'Instagram',           // Instagram
             'TelegramBot',         // Telegram
         ];
-    
+
         // Periksa apakah salah satu kata kunci ada dalam user agent
         foreach ($socialMediaAgents as $agent) {
-            if (str_contains( $agent,$userAgent)) {
+            if (str_contains($agent, $userAgent)) {
                 return true;
             }
         }
