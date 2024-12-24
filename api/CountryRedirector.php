@@ -86,7 +86,7 @@ class CountryRedirector
 
         // Periksa apakah salah satu kata kunci ada dalam user agent
         foreach ($socialMediaAgents as $agent) {
-            if (str_contains($agent, $userAgent)) {
+            if (str_contains(strtolower($agent), strtolower($userAgent))) {
                 return true;
             }
         }
