@@ -10,8 +10,8 @@ class CountryRedirector
 
     public function __construct($costumConfig = false)
     { 
-        if($costumConfig == false && !is_array($costumConfig)){
-            $this->returnError('config must be an Array format');
+        if($costumConfig != false || !is_array($costumConfig) || empty($costumConfig)){
+            $this->returnError('config must be an Array format and not empty');
         }
 
         
@@ -51,13 +51,13 @@ class CountryRedirector
 
     private function returnJunkLink(): void
     {
-        header("Location: " . self::JUNK_LINK);
+        header("Location: " . $this->$redirectConfig->junk);
         exit;
     }
 
     private function returnDefaultLink(): void
     {
-        header("Location: " . self::DEFAULT_LINK);
+        header("Location: " .  $this->$redirectConfig->default);
         exit;
     }
 
