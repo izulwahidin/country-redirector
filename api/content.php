@@ -9,7 +9,7 @@ $arrGifs = json_decode(file_get_contents(__DIR__."/../assets/gifs.json"));
 // shuffle($arrGifs);
 
 // Validate and sanitize URL
-$gifUrl = getGifUrl(filter_var("https://" . $arrGifs[0], FILTER_VALIDATE_URL));
+$getGifFromUrl = getGifUrl($_GET["id"]);
 
 if ($gifUrl) {
     try {
@@ -41,7 +41,7 @@ function getGifUrl($id) {
     // Create consistent index using crc32 hash
     $hash = crc32($id);
     $index = abs($hash % count($arrGifs));
-    return $arrGifs[$index];
+    return "https://".$arrGifs[$index];
 }
 
 
