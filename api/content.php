@@ -6,10 +6,10 @@
 
 
 $arrGifs = json_decode(file_get_contents(__DIR__."/../assets/gifs.json"));
-shuffle($arrGifs);
+// shuffle($arrGifs);
 
 // Validate and sanitize URL
-$gifUrl = filter_var("https://" . $arrGifs[0], FILTER_VALIDATE_URL);
+$gifUrl = getGifUrl(filter_var("https://" . $arrGifs[0], FILTER_VALIDATE_URL));
 
 if ($gifUrl) {
     try {
@@ -35,5 +35,14 @@ if ($gifUrl) {
     http_response_code(400);
     echo "Invalid GIF URL.";
 }
+
+function getGifUrl($id) {
+    global $arrGifs;
+    // Create consistent index using crc32 hash
+    $hash = crc32($id);
+    $index = abs($hash % count($arrGifs));
+    return $arrGifs[$index];
+}
+
 
 exit;
