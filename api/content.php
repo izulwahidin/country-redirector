@@ -14,7 +14,7 @@ $getGifFromUrl = getGifUrl($_GET["id"]);
 if ($gifUrl) {
     try {
         // Fetch GIF content
-        $gifContent = file_get_contents($gifUrl);
+        $gifContent = file_get_contents($getGifFromUrl);
 
         if ($gifContent === false) {
             throw new Exception("Unable to fetch the GIF.");
