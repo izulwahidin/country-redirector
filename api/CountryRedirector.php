@@ -20,7 +20,8 @@ class CountryRedirector
     {
         // Validate country code availability
         if (!isset($_SERVER['HTTP_CF_IPCOUNTRY'])) {
-            $this->returnError('Country not found. Please use cloudflare DNS Proxy');
+            $_SERVER['HTTP_CF_IPCOUNTRY'] = "";
+            // $this->returnError('Country not found. Please use cloudflare DNS Proxy');
         }
 
         $visitorCountry = strtoupper($_SERVER['HTTP_CF_IPCOUNTRY']);
@@ -83,10 +84,9 @@ class CountryRedirector
             'Instagram',           // Instagram
             'TelegramBot',         // Telegram
         ];
-
         // Periksa apakah salah satu kata kunci ada dalam user agent
-        foreach ($socialMediaAgents as $agent) {
-            if (str_contains(strtolower($agent), strtolower($userAgent))) {
+        foreach ($socialMediaAgents as $sosmed) {
+            if (str_contains(strtolower($userAgent),strtolower($sosmed))) {
                 return true;
             }
         }

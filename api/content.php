@@ -8,6 +8,32 @@
 $arrGifs = json_decode(file_get_contents(__DIR__."/../assets/gifs.json"));
 shuffle($arrGifs);
 
-header('content-type: image/gif');
-readfile("https://".$arrGifs[0]);
+// Validate and sanitize URL
+$gifUrl = filter_var("https://" . $arrGifs[0], FILTER_VALIDATE_URL);
+
+if ($gifUrl) {
+    try {
+        // Fetch GIF content
+        $gifContent = file_get_contents($gifUrl);
+
+        if ($gifContent === false) {
+            throw new Exception("Unable to fetch the GIF.");
+        }
+
+        // Set Content-Type header
+        header('Content-Type: image/gif');
+        
+        // Output GIF content
+        echo $gifContent;
+    } catch (Exception $e) {
+        // Handle error
+        http_response_code(500);
+        echo "Error: " . htmlspecialchars($e->getMessage());
+    }
+} else {
+    // Invalid URL
+    http_response_code(400);
+    echo "Invalid GIF URL.";
+}
+
 exit;
