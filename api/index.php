@@ -5,7 +5,7 @@ require_once(__DIR__ . "/CountryRedirector.php");
 $costumTiers = [
     // Tier 1 - Highest value countries
     'tier1' => [
-        "direct_link" => 'https://www.profitablecpmrate.com/m2jp4f2vz8?key=ccb4fea8b26e4a4633fd6737d1255ef4',
+        "direct_link" => 'https://t.co/4h498Xpjqj',
         "country" => [
             'US',
             'CA',
@@ -28,7 +28,7 @@ $costumTiers = [
 
     // Tier 2 - Good monetization potential
     'tier2' => [
-        "direct_link" => 'https://www.profitablecpmrate.com/z9zmjzbzb?key=e6e74edb6e795c057a05cd8630b1afcd',
+        "direct_link" => 'https://t.co/PJB7mrV5Gl',
         "country" => [
             'IT',
             'ES',
@@ -51,7 +51,7 @@ $costumTiers = [
 
     // Tier 3 - Moderate monetization potential
     'tier3' => [
-        "direct_link" => 'https://www.profitablecpmrate.com/uy0tq433vv?key=3f01171daa8093a68c75e741ff7d6f79',
+        "direct_link" => 'https://t.co/PJB7mrV5Gl',
         "country" => [
             'PL',
             'CZ',
@@ -81,10 +81,10 @@ $costumTiers = [
     ],
 
     // default - Small monetization potential
-    'default' =>  "https://www.profitablecpmrate.com/jb28r4xys?key=0f1f612c8d8295ba5336b07dcfd93c20",
+    'default' =>  "https://t.co/y0DaHPJ4fG",
 
     // junk - Super Small monetization potential 
-    "junk" =>  "https://www.profitablecpmrate.com/cfdfjuyx?key=b49cba82c72a34289daa2af321075210"
+    "junk" =>  "https://t.co/y0DaHPJ4fG"
 ];
 
 //init CountryRedirector
