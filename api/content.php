@@ -8,8 +8,9 @@
 $arrGifs = json_decode(file_get_contents(__DIR__."/../assets/gifs.json"));
 // shuffle($arrGifs);
 
+$getGifFromUrl = getGifUrl($_GET["id"] ?? "");
 // Validate and sanitize URL
-$getGifFromUrl = getGifUrl($_GET["id"]);
+$gifUrl = filter_var($getGifFromUrl,FILTER_VALIDATE_URL);
 
 if ($gifUrl) {
     try {
