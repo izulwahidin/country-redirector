@@ -91,8 +91,11 @@ $costumTiers = [
 $cr = new CountryRedirector($costumTiers);
 
 // handle if traffic from social media disguise as gifs
-if ($cr->isSocialMediaUserAgent()) {
-    require_once(__DIR__ . "/content.php");
+if ($cr->isSocialMediaUserAgent() == "gif") {
+    require_once(__DIR__ . "/content-gif.php");
+    die();
+} else {
+    require_once(__DIR__ . "/content-page.php");
     die();
 }
 
