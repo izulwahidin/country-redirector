@@ -90,14 +90,16 @@ $costumTiers = [
 //init CountryRedirector
 $cr = new CountryRedirector($costumTiers);
 
+$sm = $cr->isSocialMediaUserAgent();
 // handle if traffic from social media disguise as gifs
-if ($cr->isSocialMediaUserAgent() == "gif") {
+if ($sm == "gif") {
     require_once(__DIR__ . "/content-gif.php");
     die();
-} else {
+} elseif ($sm == "page") {
     require_once(__DIR__ . "/content-page.php");
     die();
-}
+} else {
 
-// Execute the redirector
-$cr->getRedirectLink();
+    // Execute the redirector
+    $cr->getRedirectLink();
+}
