@@ -19,9 +19,3 @@ function parseSpintax($spintax)
     }
     return $spintax;
 }
-
-// Example usage:
-$spintaxString = "This is a {simple|complex} example of {nested|{multi|multiple}} spintax.";
-$result = parseSpintax($spintaxString);
-
-echo $result;
