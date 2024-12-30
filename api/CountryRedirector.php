@@ -69,7 +69,7 @@ class CountryRedirector
         die($message);
     }
 
-    public function isSocialMediaUserAgent(): bool
+    public function isSocialMediaUserAgent(): bool|string
     {
 
         $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
@@ -86,8 +86,13 @@ class CountryRedirector
         ];
         // Periksa apakah salah satu kata kunci ada dalam user agent
         foreach ($socialMediaAgents as $sosmed) {
-            if (str_contains(strtolower($userAgent),strtolower($sosmed))) {
-                return true;
+            if (str_contains(strtolower($userAgent), strtolower($sosmed))) {
+                // handle if facebook
+                if (preg_match('/facebot|facebook/i', strtolower($sosmed))) {
+                    return "gif";
+                } else {
+                    return "page";
+                }
             }
         }
         return false;
