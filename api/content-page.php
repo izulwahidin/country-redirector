@@ -4,7 +4,7 @@ $getTitles = json_decode(file_get_contents(__DIR__ . "/../assets/headlines.json"
 shuffle($getTitles);
 
 
-$title = $getTitles[0];
+$title = parseSpintax($getTitles[0]);
 $description = "Under Construction";
 $image = getGifUrl($_GET["id"] ?? "");
 $url = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
