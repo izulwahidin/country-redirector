@@ -5,7 +5,7 @@ require_once(__DIR__ . "/CountryRedirector.php");
 $costumTiers = [
     // Tier 1 - Highest value countries
     'tier1' => [
-        "direct_link" => 'https://t.co/4h498Xpjqj',
+        "direct_link" => 'https://poawooptugroo.com/4/8600194',
         "country" => [
             'US',
             'CA',
@@ -28,7 +28,7 @@ $costumTiers = [
 
     // Tier 2 - Good monetization potential
     'tier2' => [
-        "direct_link" => 'https://t.co/PJB7mrV5Gl',
+        "direct_link" => 'https://poawooptugroo.com/4/8600196',
         "country" => [
             'IT',
             'ES',
@@ -51,7 +51,7 @@ $costumTiers = [
 
     // Tier 3 - Moderate monetization potential
     'tier3' => [
-        "direct_link" => 'https://t.co/PJB7mrV5Gl',
+        "direct_link" => 'https://poawooptugroo.com/4/8600197',
         "country" => [
             'PL',
             'CZ',
@@ -81,10 +81,10 @@ $costumTiers = [
     ],
 
     // default - Small monetization potential
-    'default' =>  "https://t.co/y0DaHPJ4fG",
+    'default' =>  "https://poawooptugroo.com/4/8600199",
 
     // junk - Super Small monetization potential 
-    "junk" =>  "https://t.co/y0DaHPJ4fG"
+    "junk" =>  "https://poawooptugroo.com/4/8600333"
 ];
 
 //init CountryRedirector
